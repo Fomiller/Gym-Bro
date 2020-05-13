@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Connect server to routes
-require("./routes/api-routes.js")(app);
+app.use(require("./routes/api-routes.js"));
 
 // Run server
 app.listen(PORT, () => console.log(`server listening at http://localhost:${PORT}`));
