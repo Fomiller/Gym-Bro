@@ -1,6 +1,7 @@
 const db = require('../models');
 const express = require('express');
 const router = express.Router();
+const passport = require('../config/passport');
 
 router.get("/", (req, res) => {
   res.send("hello world");
@@ -17,12 +18,15 @@ router.get("/api/users", (req, res) => {
 });
 
 router.post("/api/users", (req, res) => {
-  db.User.create(req.body)
-  .then(newUser => {
-    res.json(newUser);
-  })
-  .catch(err => {
-    res.json(err);
+  newUser = new db.User(req.body)
+  console.log(newUser);
+
+  db.User.register(newUser, req.body.password, (err, user) => {
+    if(err) {
+      res.json({success: false, message: "User could not be created, Error:", err });
+    } else {
+      res.json({ success: true, message: "User has been successfully created."});
+    }
   });
 });
 
