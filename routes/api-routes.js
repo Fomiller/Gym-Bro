@@ -7,11 +7,23 @@ router.get("/", (req, res) => {
 });
 
 router.get("/api/users", (req, res) => {
-  res.send("all users");
+  db.User.find({})
+  .then(User => {
+    res.json(User);
+  })
+  .catch(err => {
+    res.json(err)
+  });
 });
 
-router.post("/api/signup", (req, res) => {
-  res.send("user signup");
+router.post("/api/users", (req, res) => {
+  db.User.create(req.body)
+  .then(newUser => {
+    res.json(newUser);
+  })
+  .catch(err => {
+    res.json(err);
+  });
 });
 
 module.exports = router;
