@@ -30,4 +30,21 @@ router.post("/api/users", (req, res) => {
   });
 });
 
+router.post('/api/login', passport.authenticate('local'), async (req, res) => {
+  if (req.user) {
+    const user = await db.User.findOne({email: req.user.email})
+    console.log("SUCCESS!!!")
+    return res.send(user);
+  } else {
+    console.log("username or password incorrect");
+    res.json({success: false, message: 'username or password incorrect' })
+  }
+});
+
+router.post('/api/logout', (req, res) => {
+  req.logout();
+  console.log('logging out');
+  res.send('logged out');
+});
+
 module.exports = router;
