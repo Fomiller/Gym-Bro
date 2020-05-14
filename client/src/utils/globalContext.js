@@ -14,7 +14,6 @@ const reducer = (state, action) => {
         user: action.payload
       };
     case "LOGOUT":
-      // logout();
       return {
         ...state,
         user: null
