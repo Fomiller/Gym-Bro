@@ -18,14 +18,14 @@ router.get("/api/users", (req, res) => {
 });
 
 router.post("/api/users", (req, res) => {
-  newUser = new db.User(req.body)
-  console.log(newUser);
+  newUser = new db.User(req.body);
 
   db.User.register(newUser, req.body.password, (err, user) => {
+    console.log("TEST",user);
     if(err) {
       res.json({success: false, message: "User could not be created, Error:", err });
     } else {
-      res.json({ success: true, message: "User has been successfully created."});
+      res.json(user);
     }
   });
 });
