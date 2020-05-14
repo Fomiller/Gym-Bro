@@ -9,9 +9,8 @@ export default function SignupForm() {
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
 
-  // create new user on submit
+  // create new user on submit  
   const handleSubmit = async (e) => {
-    console.log(emailRef.current.value);
     e.preventDefault();
     // send input data to server
     const newUser = await createUser({
@@ -28,7 +27,7 @@ export default function SignupForm() {
       console.log("USER IS UNDEFINED")
     }
     // change global state
-    dispatch({type: "SET_USER", payload:newUser})
+    dispatch({ type: "SET_USER", payload: newUser })
   };
 
   // Redirect to homepage if user exists
@@ -50,6 +49,7 @@ export default function SignupForm() {
           />
           <input
           ref={passwordRef}
+          type="password"
           placeholder="password"
           />
           <button onClick={handleSubmit}>Signup</button>
