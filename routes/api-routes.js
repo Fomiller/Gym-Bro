@@ -18,19 +18,19 @@ router.get("/api/users", (req, res) => {
 });
 
 router.post("/api/users", (req, res) => {
-  newUser = new db.User(req.body)
-  console.log(newUser);
+  newUser = new db.User(req.body);
 
   db.User.register(newUser, req.body.password, (err, user) => {
     if(err) {
       res.json({success: false, message: "User could not be created, Error:", err });
     } else {
-      res.json({ success: true, message: "User has been successfully created."});
+      res.json(user);
     }
   });
 });
 
 router.post('/api/login', passport.authenticate('local'), async (req, res) => {
+  // Passport authenticates the user and if the user login info is correct creates a req.user property in the req which is then used for the login...
   if (req.user) {
     const user = await db.User.findOne({email: req.user.email})
     console.log("SUCCESS!!!")
