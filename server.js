@@ -9,8 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Database connection
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnesstrainerDB", {useNewUrlParser: true});
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnesstrainerDB", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/gymbrodb", { useNewUrlParser: true });
 
 // Set up morgan
 app.use(logger('dev'));
