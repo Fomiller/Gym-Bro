@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useGlobalContext } from '../../utils/globalContext';
 import { login } from '../../utils/API';
 import { Redirect } from 'react-router-dom';
+import { Button, Input } from 'antd';
 
 export default function LoginForm() {
   const [state, dispatch] = useGlobalContext();
@@ -32,16 +33,16 @@ export default function LoginForm() {
     return (
       <div>
         <form>
-        <input
+        <Input
           ref={emailRef}
           placeholder="email"
           />
-          <input
+          <Input.Password
           ref={passwordRef}
-          type='password'
           placeholder="password"
           />
-          <button onClick={handleSubmit}>Login</button>
+          {/* <button onClick={handleSubmit}>Login</button> */}
+          <Button onClick={handleSubmit}>Login</Button>
         </form>
       </div>
     )
