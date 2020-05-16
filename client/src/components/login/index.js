@@ -11,10 +11,12 @@ export default function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(emailRef.current.input.value);
+    console.log(passwordRef.current.input.value);
     // send data to server to request login
     const user = await login({
-      email: emailRef.current.value,
-      password: passwordRef.current.value
+      email: emailRef.current.input.value,
+      password: passwordRef.current.input.value
     });
     // reset input fields on submit
     emailRef.current.value = '';

@@ -15,9 +15,9 @@ export default function SignupForm() {
     e.preventDefault();
     // send input data to server
     const newUser = await createUser({
-      email: emailRef.current.value,
-      username: usernameRef.current.value,
-      password: passwordRef.current.value
+      email: emailRef.current.input.value,
+      username: usernameRef.current.input.value,
+      password: passwordRef.current.input.value
     });
     // reset vlaues of inputs
     emailRef.current.value = '';
