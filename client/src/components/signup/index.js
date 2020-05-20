@@ -18,12 +18,15 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: 'right',
+    textAlign: 'center',
     color: theme.palette.text.secondary,
     marginTop: 50,
   },
   header: {
     marginTop: 50
+  },
+  button: {
+    marginBottom: theme.spacing(1)
   }
 }));
 
@@ -76,11 +79,11 @@ export default function SignupForm() {
         <Paper className={classes.paper} elevation={3}>
         <form>
         <Grid container justify='center' spacing={2}>
-          <Grid container direction='row' justify='flex-end' alignItems='center'>
+          {/* <Grid container direction='row' justify='flex-end' alignItems='center'>
             <Grid item xs={12}>
               <Link component={NavLink} variant='body2' to='/Login'>Login</Link>
             </Grid>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12}>
             <TextField
             inputRef={emailRef} 
@@ -107,7 +110,10 @@ export default function SignupForm() {
             />
           </Grid>
           <Grid item>
-            <Button color='primary' variant='outlined' onClick={handleSubmit}>Signup</Button>
+            <Button color='primary' variant='outlined' className={classes.button} onClick={handleSubmit}>Signup</Button>
+            <br/>
+            <Typography variant='body2' style={{display:"inline-block"}}>Already have an account?&nbsp;</Typography>
+            <Link component={NavLink} variant='body2' to='/Login' style={{display:"inline-block"}}>Login</Link>
           </Grid>
         </Grid>
         </form>
