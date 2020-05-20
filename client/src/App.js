@@ -1,8 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { HomePage, SignupPage, LoginPage } from './pages';
+import { HomePage, SignupPage, LoginPage, AboutPage } from './pages';
 import Nav from './components/nav';
-import { render } from 'react-dom';
 
 function App() {
 
@@ -12,6 +11,7 @@ function App() {
           <Nav/>
           <Switch>
             <Route exact path={[`${process.env.PUBLIC_URL}/`,`${process.env.PUBLIC_URL}/home`]} component={HomePage}/>
+            <Route exact path={`${process.env.PUBLIC_URL}/about`} component={AboutPage}/>
             <Route exact path={`${process.env.PUBLIC_URL}/*`} component={HomePage}/>
           </Switch>
         </div>

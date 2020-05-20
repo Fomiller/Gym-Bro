@@ -41,14 +41,14 @@ export default function Nav() {
         GymBro
       </Typography>
       <nav>
-        <Link component={NavLink} variant="button" color="textPrimary" to="/login" className={classes.link}>
-          Login
+        <Link component={NavLink} variant="button" color="textPrimary" to="/about" className={classes.link}>
+          about
         </Link>
         <Link component={NavLink} variant="button" color="textPrimary" to="/signup" className={classes.link}>
           Signup
         </Link>
       </nav>
-      <Button href="#" color="primary" variant="outlined" className={classes.link}>
+      <Button component={NavLink} to='/login' color="primary" variant="outlined" className={classes.link}>
         Login
       </Button>
     </Toolbar>
