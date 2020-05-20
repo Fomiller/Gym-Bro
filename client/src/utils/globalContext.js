@@ -16,7 +16,13 @@ const reducer = (state, action) => {
     case "LOGOUT":
       return {
         ...state,
-        user: null
+        user: null,
+        loggedIn: action.payload
+      };
+    case "LOGIN":
+      return {
+        ...state,
+        loggedIn: action.payload
       };
     default:
       return state;
@@ -26,6 +32,7 @@ const reducer = (state, action) => {
 const GlobalProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
     user: null,
+    loggedIn: false,
   });
   return <Provider value={[state, dispatch]} {...props}/>
 };
