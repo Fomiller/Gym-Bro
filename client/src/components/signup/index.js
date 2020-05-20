@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     marginTop: 50,
   },
+  header: {
+    marginTop: 50
+  }
 }));
 
 export default function SignupForm() {
@@ -60,6 +64,15 @@ export default function SignupForm() {
   else {
     return (
       <Container maxWidth='xs'>
+        <Grid container justify='center' className={classes.header}>
+          <Grid item>
+            <Link component={NavLink} to='/' style={{color:'black', textDecorationLine:'none'}}>
+              <Typography variant='h2'>
+                GYMBRO
+              </Typography>
+            </Link>
+          </Grid>
+        </Grid>
         <Paper className={classes.paper} elevation={3}>
         <form>
         <Grid container justify='center' spacing={2}>
