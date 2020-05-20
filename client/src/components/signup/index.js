@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { createUser } from '../../utils/API';
 import { useGlobalContext } from '../../utils/globalContext';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 // Material-ui imports
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: 'center',
+    textAlign: 'right',
     color: theme.palette.text.secondary,
     marginTop: 50,
   },
@@ -58,28 +59,15 @@ export default function SignupForm() {
   // Render Signup form if user === null
   else {
     return (
-      // <div>
-      //   <form>
-      //     <input
-      //     ref={emailRef}
-      //     placeholder="email"
-      //     />
-      //     <input
-      //     ref={usernameRef}
-      //     placeholder="username"
-      //     />
-      //     <input
-      //     ref={passwordRef}
-      //     placeholder="password"
-      //     type='password'
-      //     />
-      //     <button onClick={handleSubmit}>Signup</button>
-      //   </form>
-      // </div>
-      <Container>
+      <Container maxWidth='xs'>
         <Paper className={classes.paper} elevation={3}>
         <form>
         <Grid container justify='center' spacing={2}>
+          <Grid container direction='row' justify='flex-end' alignItems='center'>
+            <Grid item xs={12}>
+              <Link component={NavLink} variant='body2' to='/Login'>Login</Link>
+            </Grid>
+          </Grid>
           <Grid item xs={12}>
             <TextField
             inputRef={emailRef} 
