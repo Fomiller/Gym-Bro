@@ -46,17 +46,20 @@ export default function SignupForm() {
       username: usernameRef.current.value,
       password: passwordRef.current.value
     });
+    console.log(newUser);
     // reset vlaues of inputs
     emailRef.current.value = '';
     usernameRef.current.value = '';
     passwordRef.current.value = '';
     // check response
-    if (newUser === undefined) {
-      console.log("USER IS UNDEFINED")
+    if (newUser.success === false) {
+      console.log("USER not created");
+    } else {
+      // change global state
+      console.log('created');
+      dispatch({ type: "SET_USER", payload: newUser });
+      dispatch({ type: "LOGIN", payload: true });
     }
-    // change global state
-    dispatch({ type: "SET_USER", payload: newUser });
-    dispatch({ type: "LOGIN", payload: true });
   };
 
   // Redirect to homepage if user exists
