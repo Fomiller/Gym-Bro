@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { createUser } from '../../utils/API';
 import { useGlobalContext } from '../../utils/globalContext';
 import { Redirect } from 'react-router-dom';
-import { Button, Input } from 'antd';
 
 export default function SignupForm() {
   const [state, dispatch] = useGlobalContext();
@@ -15,9 +14,9 @@ export default function SignupForm() {
     e.preventDefault();
     // send input data to server
     const newUser = await createUser({
-      email: emailRef.current.input.value,
-      username: usernameRef.current.input.value,
-      password: passwordRef.current.input.value
+      email: emailRef.current.value,
+      username: usernameRef.current.value,
+      password: passwordRef.current.value
     });
     // reset vlaues of inputs
     emailRef.current.value = '';
@@ -40,19 +39,20 @@ export default function SignupForm() {
     return (
       <div>
         <form>
-          <Input
+          <input
           ref={emailRef}
           placeholder="email"
           />
-          <Input
+          <input
           ref={usernameRef}
           placeholder="username"
           />
-          <Input.Password
+          <input
           ref={passwordRef}
           placeholder="password"
+          type='password'
           />
-          <Button onClick={handleSubmit}>Signup</Button>
+          <button onClick={handleSubmit}>Signup</button>
         </form>
       </div>
     );
