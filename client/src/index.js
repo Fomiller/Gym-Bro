@@ -5,13 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {GlobalProvider} from './utils/globalContext';
-import Nav from './components/nav';
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalProvider>
       <Router>
-        <Nav/>
         <App />
       </Router>
     </GlobalProvider>
