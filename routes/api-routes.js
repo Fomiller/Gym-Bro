@@ -2,6 +2,7 @@ const db = require('../models');
 const express = require('express');
 const router = express.Router();
 const passport = require('../config/passport');
+const hooks = require('../hooks');
 
 router.get("/", (req, res) => {
   res.send("hello world");
@@ -34,7 +35,7 @@ router.post('/api/login', passport.authenticate('local'), async (req, res) => {
   if (req.user) {
     const user = await db.User.findOne({email: req.user.email})
     console.log("SUCCESS!!!")
-    return res.send(user);
+    return res.send(hooks.cleanUser(user));
   } else {
     console.log("username or password incorrect");
     res.json({success: false, message: 'username or password incorrect' })
