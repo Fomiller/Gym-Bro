@@ -25,7 +25,7 @@ router.post("/api/users", (req, res) => {
     if(err) {
       res.json({success: false, message: "User could not be created, Error:", err });
     } else {
-      res.json(user);
+      res.json(hooks.cleanUser(user));
     }
   });
 });
