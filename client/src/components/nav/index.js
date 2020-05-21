@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
-    marginBottom: 50
   },
   toolbar: {
     flexWrap: 'wrap',
@@ -44,46 +43,11 @@ export default function Nav() {
         <Link component={NavLink} variant="button" color="textPrimary" to="/about" className={classes.link}>
           about
         </Link>
-        <Link component={NavLink} variant="button" color="textPrimary" to="/signup" className={classes.link}>
-          Signup
-        </Link>
       </nav>
       <Button component={NavLink} to='/login' color="primary" variant="outlined" className={classes.link}>
         Login
       </Button>
     </Toolbar>
   </AppBar>
-    // <div>
-    //   <NavLink
-    //   exact
-    //   to='/login'
-    //   activeStyle={{
-    //     fontWeight: "bold",
-    //     color: "red"
-    //   }}
-    //   >
-    //     Login
-    //   </NavLink>
-    //   <NavLink
-    //   exact
-    //   to='/signup'
-    //   activeStyle={{
-    //     fontWeight: "bold",
-    //     color: "red"
-    //   }}
-    //   >
-    //     Signup
-    //   </NavLink>
-    //   <NavLink 
-    //   exact
-    //   to='/'
-    //   activeStyle={{
-    //     fontWeight: "bold",
-    //     color: "red"
-    //   }}
-    //   >
-    //     Home
-    //   </NavLink>
-    // </div>
   );
 };
