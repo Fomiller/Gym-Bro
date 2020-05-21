@@ -8,6 +8,48 @@ router.get("/", (req, res) => {
   res.send("hello world");
 });
 
+// Exercise Routes
+router.get('/api/exercises', (req,res) => {
+  db.Exercise.find({})
+  .then(Exercise => {
+    res.json(Exercise);
+  })
+  .catch(err => {
+    res.json(err)
+  });
+});
+
+router.post('/api/exercises', ({body}, res) => {
+  db.Exercise.create(body)
+  .then(Exercise => {
+    res.json(Exercise);
+  })
+  .catch(err => {
+    res.status(400).json(err);
+  });
+});
+
+router.delete('/api/exercises/:id', (req, res) => {
+  db.Exercise.deleteOne({_id: req.params.id})
+  .then(Exercise => {
+    res.json(Exercise)
+  })
+  .catch(err => {
+    res.status(400).json(err);
+  });
+});
+
+router.put('/api/exercises', (req, res) => {
+  db.Exercise.findOneAndUpdate({_id: req.body.id}, req.body)
+  .then(Exercise => {
+    res.json(Exercise)
+  })
+  .catch(err => {
+    res.json(err)
+  });
+});
+
+
 router.get("/api/users", (req, res) => {
   db.User.find({})
   .then(User => {
