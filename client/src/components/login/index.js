@@ -55,7 +55,7 @@ export default function LoginForm() {
     }
     // change global state 
     dispatch({ type: "SET_USER", payload: user });
-    // dispatch({ type: "LOGIN", payload:true });
+    dispatch({ type: "LOGIN", payload:true });
   };
 
   if (state.loggedIn) {
