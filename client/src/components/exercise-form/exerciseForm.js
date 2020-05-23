@@ -9,7 +9,12 @@ import Button from '@material-ui/core/Button';
 import Autocomplete, { createFilterOptions } from '@material-ui/lab/Autocomplete';
 
 const useStyles = makeStyles((theme) => ({
-  
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    marginTop: 50,
+  },
 }));
 
 const muscleGroup = [
@@ -55,37 +60,42 @@ export default function ExerciseForm() {
   } 
 
   return (
-    <Grid container maxWidth='xs'>
-      <Grid item>
-        <Paper elevation={3}>
-        <TextField inputRef={exerciseNameRef} id="outlined-basic" label="Exercise Name" variant="outlined" size={"small"} />
-        <Autocomplete
-          // id="filter-demo"
-          options={muscleGroup}
-          getOptionLabel={(option) => option.muscleGroup}
-          // filterOptions={filterOptions}
-          // style={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label="Muscle Group" variant="outlined" inputRef={muscleGroupRef}/>}
-          />
-        <Autocomplete
-          // id="filter-demo"
-          options={primaryMuscle}
-          getOptionLabel={(option) => option.muscle}
-          // filterOptions={filterOptions}
-          // style={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label="Primary Muscle" variant="outlined" inputRef={primaryMuscleRef}/>}
-          />
-        <Autocomplete
-          // id="filter-demo"
-          options={secondaryMuscle}
-          getOptionLabel={(option) => option.muscle}
-          // filterOptions={filterOptions}
-          // style={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label="Secondary Muscle" variant="outlined" inputRef={secondaryMuscleRef}/>}
-        />
-        <Button color='primary' onClick={HandleSubmit}>Submit</Button>
+        <Paper elevation={3} className={classes.paper}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <TextField
+              inputRef={exerciseNameRef}
+              id="outlined-basic"
+              label="Exercise Name"
+              variant="outlined"
+              fullWidth='true'
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Autocomplete
+              options={muscleGroup}
+              getOptionLabel={(option) => option.muscleGroup}
+              renderInput={(params) => <TextField {...params} label="Muscle Group" variant="outlined" inputRef={muscleGroupRef}/>}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Autocomplete
+              options={primaryMuscle}
+              getOptionLabel={(option) => option.muscle}
+              renderInput={(params) => <TextField {...params} label="Primary Muscle" variant="outlined" inputRef={primaryMuscleRef}/>}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Autocomplete
+              options={secondaryMuscle}
+              getOptionLabel={(option) => option.muscle}
+              renderInput={(params) => <TextField {...params} label="Secondary Muscle" variant="outlined" inputRef={secondaryMuscleRef}/>}
+              />
+            </Grid>
+            <Grid item>
+              <Button color='primary' onClick={HandleSubmit}>Submit</Button>
+            </Grid>
+          </Grid>
         </Paper>
-      </Grid>
-    </Grid>
   );
 };
