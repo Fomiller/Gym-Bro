@@ -27,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
   link: {
     margin: theme.spacing(1, 1.5),
   },
+  logo: {
+    color: 'black',
+    textDecorationLine: 'none !important',
+  }
 }));
 
 
@@ -37,7 +41,7 @@ export default function Nav() {
     <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
     <Toolbar className={classes.toolbar}>
       <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-        GymBro
+        <Link component={NavLink} to='/' className={classes.logo}>GymBro</Link>
       </Typography>
       <nav>
         <Link component={NavLink} variant="button" color="textPrimary" to="/about" className={classes.link}>
