@@ -21,8 +21,9 @@ router.get('/api/exercises', (req,res) => {
 
 router.post('/api/exercises', ({body}, res) => {
   db.Exercise.create(body)
-  .then(Exercise => {
-    res.json(Exercise);
+  .then(({_id}) => db.User.findOneAndUpdate({_id: body.userId}, {$push: {exercises: _id}}, {new: true}))
+  .then(User => {
+    res.json(User)
   })
   .catch(err => {
     res.status(400).json(err);

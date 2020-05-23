@@ -16,10 +16,16 @@ const UserSchema = new Schema({
     type: String,
     unique:true,
     required: (true, 'Username is Required'),
-  }
+  },
+  exercises: [{
+    type: Schema.Types.ObjectId,
+    ref:'Exercise',
+    autopopulate: true
+  }],
 }, { toJSON: {virtuals: true}});
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
+UserSchema.plugin(require('mongoose-autopopulate'));
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
