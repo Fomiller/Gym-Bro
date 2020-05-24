@@ -7,6 +7,7 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Autocomplete, { createFilterOptions } from '@material-ui/lab/Autocomplete';
+import { createExercise } from '../../utils/API';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -54,9 +55,9 @@ export default function ExerciseForm() {
       name: exerciseNameRef.current.value,
       muscleGroup: muscleGroupRef.current.value,
       primaryMuscle: primaryMuscleRef.current.value,
-      secondaryMuscleRef: secondaryMuscleRef.current.value
+      secondaryMuscle: secondaryMuscleRef.current.value
     }
-    console.log(newExercise);
+    createExercise(newExercise);
   } 
 
   return (
