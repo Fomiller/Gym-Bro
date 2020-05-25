@@ -41,7 +41,8 @@ export default function Nav() {
   const classes = useStyles();
   const [state, dispatch] = useGlobalContext()
   
-  const handleLogout = () => {
+  const handleLogout = (e) => {
+    e.preventDefault();
     logout();
     dispatch({ type:"LOGOUT", payload: false });
   }
