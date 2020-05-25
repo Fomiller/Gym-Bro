@@ -5,27 +5,31 @@ import { makeStyles } from '@material-ui/core/styles';
 const items = [
   {
     title: 'title 1',
-    image: `/images/hero_05.jpg`,
+    image: `/images/hero_06.jpg`,
   },
   {
     title: 'title 2',
-    image: `./images/hero_02.jpg`,
+    image: `./images/hero_07.jpg`,
   },
   {
     title: 'title 3',
-    image: `./images/hero_03.jpg`,
+    image: `./images/hero_08.jpg`,
+  },
+  {
+    title: 'title 4',
+    image: `./images/hero_09.jpg`,
   }
 ]
 
 const useStyles = makeStyles((theme) => ({
   hero: {
     // maxHeight: 400,
-    // overflow: 'hidden'
-    // backgroundColor:'Aliceblue'
+    overflow: 'hidden',
+    backgroundColor:'Aliceblue'
   },
   heroImage: {
     width: '100%',
-    height: 400,
+    height: 'auto',
     // maxHeight:400,
   }
 }));
