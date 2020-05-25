@@ -40,3 +40,17 @@ export const logout = async () => {
     return err;
   }
 };
+
+export const createExercise = async (data) => {
+  try {
+    const res = await axios.post('/api/exercises', data);
+    if(res.status === 200) {
+      console.log('exercise created')
+    }
+    return null;
+  }
+  catch (err) {
+    console.log('API ERR',err);
+    return err;
+  }
+}

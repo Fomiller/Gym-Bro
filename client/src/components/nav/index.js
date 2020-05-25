@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import { useGlobalContext } from '../../utils/globalContext';
+import { logout } from '../../utils/API';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -39,6 +40,12 @@ const useStyles = makeStyles((theme) => ({
 export default function Nav() {
   const classes = useStyles();
   const [state, dispatch] = useGlobalContext()
+  
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout();
+    dispatch({ type:"LOGOUT", payload: false });
+  }
 
   if (state.user) {
     return (
@@ -55,8 +62,8 @@ export default function Nav() {
             profile
           </Link>
         </nav>
-        <Button component={NavLink} to='/login' color="primary" variant="outlined" className={classes.link}>
-          Login
+        <Button color="secondary" variant="outlined" className={classes.link} onClick={handleLogout}>
+          Logout
         </Button>
       </Toolbar>
     </AppBar>
